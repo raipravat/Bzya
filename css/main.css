@@ -5,6 +5,7 @@
   --dark-color: #212529;
   --light-color: #f8f9fa;
   --gray-color: #6c757d;
+  --active-color: #007bff;
   --transition: all 0.3s ease;
 }
 
@@ -95,7 +96,7 @@ section {
 
 /* For dark navbar */
 .navbar-dark .nav-link.active {
-  color: var(--primary-color) !important;
+  color: var(--active-color) !important;
 }
 
 /* For light navbar (if you ever need it) */

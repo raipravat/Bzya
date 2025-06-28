@@ -12,7 +12,6 @@
 body {
   font-family: "Poppins", sans-serif;
   color: var(--dark-color);
-  padding-top: 70px;
   overflow-x: hidden;
 }
 
@@ -46,8 +45,6 @@ section {
 .navbar {
   background-color: rgba(38, 61, 66, 0.95);
   transition: var(--transition);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 .navbar.scrolled {
@@ -129,7 +126,10 @@ section {
 
 .hero-image-container {
   position: relative;
-  display: inline-block;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  
 }
 
 .hero-image {

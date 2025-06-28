@@ -217,4 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
   fadeElements.forEach((element) => {
     fadeObserver.observe(element);
   });
+
+  // Auto Year Update
+  document.getElementById("currentYear").textContent = new Date().getFullYear();
 });

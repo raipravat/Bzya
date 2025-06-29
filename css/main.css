@@ -54,6 +54,39 @@ section {
   padding-right: 0 !important;
 }
 
+.navbar-collapse {
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: rgba(38, 61, 66, 0.98);
+    padding: 20px;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar-collapse.show {
+    transform: translateX(0);
+  }
+  
+  body.navbar-open {
+    overflow: hidden;
+    position: fixed;
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 10px 0;
+    font-size: 1.1rem;
+  }
+}
+
 .navbar.scrolled {
   background-color: rgba(0, 0, 0, 0.95);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);

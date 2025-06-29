@@ -1,35 +1,68 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // Mobile menu toggle
-  const navbarToggler = document.querySelector('.navbar-toggler');
-  const navbarCollapse = document.querySelector('.navbar-collapse');
+  // Mobile menu variables
+  const navbar = document.querySelector("#navbar");
+  const navbarToggler = document.querySelector(".navbar-toggler");
+  const navbarCollapse = document.querySelector(".navbar-collapse");
+  const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
   
-  navbarToggler.addEventListener('click', function() {
+  // Track menu state
+  let menuOpen = false;
+
+  // Toggle menu function
+  function toggleMenu() {
+    menuOpen = !menuOpen;
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    const isOpening = !navbarCollapse.classList.contains('show');
     
-    document.body.classList.toggle('navbar-open', isOpening);
-    navbarCollapse.classList.toggle('show');
-    
-    if (isOpening) {
+    if (menuOpen) {
+      // Open menu
       document.body.style.overflow = 'hidden';
-      document.body.style.paddingRight = scrollbarWidth + 'px';
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+      navbarCollapse.classList.add('show');
     } else {
+      // Close menu
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
+      navbarCollapse.classList.remove('show');
     }
+  }
+
+  // Toggle menu on button click
+  navbarToggler.addEventListener('click', function(e) {
+    e.preventDefault();
+    toggleMenu();
   });
-  
+
   // Close menu when clicking links
-  document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+  navLinks.forEach(link => {
     link.addEventListener('click', () => {
-      if (navbarCollapse.classList.contains('show')) {
-        navbarToggler.click();
+      if (menuOpen) {
+        toggleMenu();
+      }
+      
+      // Smooth scroll to section
+      const targetId = link.getAttribute('href');
+      if (targetId.startsWith('#')) {
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+          window.scrollTo({
+            top: targetSection.offsetTop - navbar.offsetHeight,
+            behavior: 'smooth'
+          });
+        }
       }
     });
   });
 
+  // Close menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (menuOpen && 
+        !navbar.contains(e.target) && 
+        e.target !== navbarToggler) {
+      toggleMenu();
+    }
+  });
+
   // Navbar scroll effect
-  const navbar = document.querySelector(".navbar");
   window.addEventListener("scroll", function() {
     if (window.scrollY > 50) {
       navbar.classList.add("scrolled");

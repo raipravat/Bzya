@@ -70,6 +70,7 @@ section {
   padding: 0.5rem 1rem;
   position: relative;
   margin: 0 0.25rem;
+  color: var(--light-color) !important;
 }
 
 .nav-link::before {
@@ -85,10 +86,6 @@ section {
 
 .nav-link:hover::before {
   width: calc(100% - 2rem);
-}
-
-.nav-link.active {
-  color: var(--light-color) !important;
 }
 
 .nav-link.active::before {
@@ -313,7 +310,9 @@ section {
   .mb-4 {
     margin-top: 50px !important;
   }
+
 }
+
 
 @media (max-width: 768px) {
   .section-header h2::after {

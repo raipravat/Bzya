@@ -1,4 +1,6 @@
-/* Base Styles */
+/* ======================
+   GLOBAL STYLES 
+   ====================== */
 :root {
   --primary-color: #ff0000;
   --primary-dark: #cc0000;
@@ -33,7 +35,14 @@ a {
   transition: var(--transition);
 }
 
-/* Section Padding */
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* ======================
+   LAYOUT & SPACING 
+   ====================== */
 section {
   padding: 80px 0;
 }
@@ -42,9 +51,16 @@ section {
   section {
     padding: 60px 0;
   }
+  
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
-/* Navigation */
+/* ======================
+   NAVIGATION 
+   ====================== */
 .navbar {
   background-color: var(--active-color) !important;
   transition: var(--transition);
@@ -52,44 +68,6 @@ section {
   width: 100%;
   z-index: 1030;
   padding-right: 0 !important;
-}
-
-.navbar-collapse {
-  transition: all 0.3s ease;
-}
-
-@media (max-width: 991.98px) {
-  .navbar-collapse {
-    background-color: rgba(38, 61, 66, 0.98);
-    padding: 20px;
-    position: fixed;
-    top: 56px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: auto;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-  }
-  
-  .navbar-collapse.show {
-    transform: translateX(0);
-  }
-  
-  body.navbar-open {
-    overflow: hidden;
-    position: fixed;
-  }
-  
-  .navbar-nav .nav-link {
-    padding: 10px 0;
-    font-size: 1.1rem;
-  }
-}
-
-.navbar.scrolled {
-  background-color: rgba(0, 0, 0, 0.95);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
@@ -125,7 +103,7 @@ section {
   width: calc(100% - 2rem) !important;
 }
 
-/* Mobile Menu Fixes */
+/* Mobile Navigation */
 @media (max-width: 991.98px) {
   .navbar-collapse {
     background-color: rgba(38, 61, 66, 0.98);
@@ -148,9 +126,21 @@ section {
     overflow: hidden;
     position: fixed;
   }
+  
+  .navbar-nav .nav-link {
+    padding: 10px 0;
+    font-size: 1.1rem;
+  }
 }
 
-/* Hero Section */
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.95);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ======================
+   HERO SECTION 
+   ====================== */
 .hero-section {
   padding: 60px 0 120px 0;
   background: linear-gradient(135deg, #000000 0%, #263d42 100%);
@@ -176,7 +166,7 @@ section {
   z-index: 1;
 }
 
-
+/* Floating Badges */
 .floating-badge {
   position: absolute;
   padding: 8px 15px;
@@ -236,6 +226,7 @@ section {
   }
 }
 
+/* Social Icons */
 .social-icons {
   display: flex;
   gap: 15px;
@@ -260,19 +251,39 @@ section {
   transform: translateY(-3px) scale(1.1);
 }
 
-/* Cards and Sections */
-.video-card, .photo-card, .article-card {
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: var(--transition);
+/* Mobile Hero Adjustments */
+@media (max-width: 992px) {
+  .hero-section {
+    text-align: center;
+  }
+  
+  .hero-image {
+    margin: 30px auto 0;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .d-flex {
+    justify-content: center;
+  }
 }
 
-.video-card:hover, .photo-card:hover, .article-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+@media (max-width: 576px) {
+  .floating-badge {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  .hero-section {
+    padding: 40px 0;
+  }
 }
 
+/* ======================
+   SECTION HEADERS 
+   ====================== */
 .section-header {
   margin-bottom: 50px;
   text-align: center;
@@ -296,7 +307,231 @@ section {
   border-radius: 2px;
 }
 
-/* Back to Top Button */
+@media (max-width: 768px) {
+  .section-header h2::after {
+    width: 50px;
+    height: 3px;
+  }
+}
+
+/* ======================
+   VIDEO SECTION 
+   ====================== */
+.video-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  margin-bottom: 20px;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.video-container {
+  background: #000;
+}
+
+/* ======================
+   PHOTOGRAPHY SECTION 
+   ====================== */
+.photo-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  margin-bottom: 20px;
+}
+
+.photo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.photo-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 15px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.photo-card:hover .photo-overlay {
+  transform: translateY(0);
+}
+
+/* ======================
+   JOURNALISM SECTION 
+   ====================== */
+.article-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  margin-bottom: 20px;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.article-image {
+  position: relative;
+}
+
+.article-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--primary-color);
+  color: white;
+}
+
+/* ======================
+   ABOUT SECTION 
+   ====================== */
+.about-image-container {
+  position: relative;
+}
+
+.skills-badge {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* ======================
+   STATS SECTION 
+   ====================== */
+.stat-card {
+  padding: 20px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.stat-card i {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.counter {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+/* ======================
+   CLIENTS SECTION 
+   ====================== */
+.client-logo {
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: var(--transition);
+  max-height: 60px;
+  width: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.client-logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* ======================
+   FAQ SECTION 
+   ====================== */
+.accordion-button:not(.collapsed) {
+  background-color: rgba(0, 123, 255, 0.1);
+  color: var(--dark-color);
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+/* ======================
+   CONTACT SECTION 
+   ====================== */
+.contact-info {
+  margin-bottom: 30px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.contact-item i {
+  font-size: 1.5rem;
+  margin-right: 15px;
+  color: var(--primary-color);
+}
+
+#contactForm {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ======================
+   FOOTER 
+   ====================== */
+footer {
+  background-color: var(--dark-color);
+  color: white;
+  padding: 60px 0 30px;
+}
+
+footer a {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+footer a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* Newsletter Form */
+footer .input-group {
+  margin-bottom: 10px;
+}
+
+/* ======================
+   BACK TO TOP BUTTON 
+   ====================== */
 .back-to-top {
   position: fixed;
   bottom: 30px;
@@ -322,51 +557,73 @@ section {
   visibility: visible;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 992px) {
-  .hero-section {
+/* ======================
+   MOBILE RESPONSIVE ADJUSTMENTS 
+   ====================== */
+@media (max-width: 768px) {
+  /* Grid adjustments */
+  .col-md-6, .col-md-4, .col-lg-3 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  /* Photo grid */
+  .row.g-3 {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  
+  .col-6 {
+    width: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  /* Center align content */
+  .about-text, .video-info, .photo-overlay, .article-content {
     text-align: center;
   }
   
-  .hero-image {
-    margin: 30px auto 0;
+  /* Footer adjustments */
+  footer .row > div {
+    margin-bottom: 30px;
+    text-align: center;
   }
-
+  
   .social-icons {
     justify-content: center;
-  }
-
-  .d-flex {
-    justify-content: center;
-  }
-
-  .mb-4 {
-    margin-top: 50px !important;
-  }
-
-}
-
-
-@media (max-width: 768px) {
-  .section-header h2::after {
-    width: 50px;
-    height: 3px;
   }
 }
 
 @media (max-width: 576px) {
-  .hero-section {
-    padding: 80px 0;
+  /* Full width columns */
+  .col-6 {
+    width: 100%;
   }
   
-  .section-header {
-    margin-bottom: 30px;
+  /* Button adjustments */
+  .btn-lg {
+    padding: 10px 20px;
+    font-size: 16px;
   }
-
-  .floating-badge {
-  padding: 6px 10px;
-  border-radius: 30px;
-  font-size: 14px;
-  font-weight: 400;
-}
+  
+  /* Stack buttons vertically */
+  .btn-container {
+    flex-direction: column;
+    gap: 10px !important;
+  }
+  
+  .btn-container .btn {
+    width: 100%;
+  }
+  
+  /* Form inputs */
+  .form-control, .form-select {
+    padding: 12px 15px;
+  }
+  
+  /* Increase spacing */
+  .mb-4, .mb-5 {
+    margin-bottom: 1.5rem !important;
+  }
 }
